@@ -7,3 +7,6 @@ RUN conda env create -f env.yml
 
 RUN echo "conda activate spyder" > ~/.bashrc
 ENV PATH /opt/conda/envs/spyder/bin:$PATH
+
+# Enable LaTeX rendering in matplotlib
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install texlive-base
