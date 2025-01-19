@@ -1,4 +1,5 @@
 FROM condaforge/miniforge3
+LABEL org.opencontainers.image.description "A distrobox container image for the Spyder IDE!"
 
 # Creating new environment according to environment.yml
 WORKDIR /app
