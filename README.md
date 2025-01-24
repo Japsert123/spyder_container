@@ -1,5 +1,5 @@
 # A container for the Spyder IDE!
-This container includes the Spyder IDE installed in a conda container together with some often used conda/pytho packages. 
+This container includes the Spyder IDE installed in a conda container together with some often used conda/python packages. 
 
 The container is intended for use in distrobox/toolbox, but can of course be used to your own liking!❤️
 
