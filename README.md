@@ -1,5 +1,4 @@
-[![Images](https://github.com/Japsert123/spyder_container/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/Japsert123/spyder_container/actions/workflows/docker-publish.yml)
-# A container for the Spyder IDE!
+# A container for the Spyder IDE! [![Images](https://github.com/Japsert123/spyder_container/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/Japsert123/spyder_container/actions/workflows/docker-publish.yml)
 This container includes the Spyder IDE installed in a conda container together with some often used conda/python packages. 
 
 The container is intended for use in distrobox/toolbox, but can of course be used to your own liking!❤️
