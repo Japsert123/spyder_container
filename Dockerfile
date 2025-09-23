@@ -7,7 +7,7 @@ COPY ./packages ./packages
 COPY packages.sh packages.sh
 
 # Prepare the conda environment
-RUN conda env create -f packages/env.yml
+RUN conda env create -f packages/environment.yml
 # RUN /opt/conda/bin/conda init bash
 
 
