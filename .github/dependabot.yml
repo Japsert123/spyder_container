@@ -4,11 +4,12 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
+enable-beta-ecosystems: true # Can remove after dependabot update :))
 updates:
-#  - package-ecosystem: "pip" # See documentation for possible values
-#    directory: "/packages" # Location of package manifests
-#    schedule:
-#      interval: "weekly"
+  - package-ecosystem: "conda"
+    directory: "/"
+    schedule:
+      interval: "weekly"
 
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
