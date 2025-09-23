@@ -7,7 +7,7 @@ version: 2
 enable-beta-ecosystems: true # Can remove after dependabot update :))
 updates:
   - package-ecosystem: "conda"
-    directory: "/"
+    directory: "/packages"
     schedule:
       interval: "weekly"
 
