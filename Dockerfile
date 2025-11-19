@@ -16,6 +16,3 @@ RUN chmod +x packages.sh
 ARG DEBIAN_FRONTEND=noninteractive 
 RUN ./packages.sh
 RUN cat ./packages/distrobox.packages | xargs apt-get -y install --no-install-recommends
-
-FROM spyder_container as spyder_container_neuroscience
-RUN conda install mne
