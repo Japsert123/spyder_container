@@ -63,8 +63,8 @@ jobs:
             type=image,name=${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.DB_IMAGE_NAME }},push=true
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: true
-
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3
