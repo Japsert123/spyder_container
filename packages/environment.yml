@@ -10,7 +10,7 @@ dependencies:
   - pandas
   - scipy
   - matplotlib
-  - spyder=6.0.*
+  - spyder=6.1.*
   - pip
   - numba
   - pathlib
