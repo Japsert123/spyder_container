@@ -15,8 +15,6 @@ dependencies:
   - numba
   - pathlib
 
-  - mne # for neuroscience
-
   - pip:
     - curvefitgui
     - tk

@@ -1,2 +1,0 @@
-FROM spyder_container as spyder_container_neuroscience
-RUN conda install mne
