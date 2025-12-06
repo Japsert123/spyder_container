@@ -37,6 +37,7 @@ jobs:
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
 
+    steps:
       - name: Aggressive cleanup
         run: |
           # Remove Java (JDKs)
@@ -74,7 +75,6 @@ jobs:
 
           docker system prune -af || true
           docker builder prune -af || true
-          df -h
 
 
       - name: Build
