@@ -60,6 +60,9 @@ jobs:
         run: |
           echo "Free space:"
           df -h
+      
+      - name: convert repo name to lower case
+        run: echo "REPO=${GITHUB_REPOSITORY@L}" >> "${GITHUB_ENV}"
 
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -94,7 +97,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5.10.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.REPO }}
 
 
       - name: Build and push (${{ env.stage1 }})
@@ -104,7 +107,7 @@ jobs:
           context: .
           target: ${{ env.stage1 }}
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.stage1 }}
+          tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ env.stage1 }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push ${{ env.stage2 }})
@@ -114,15 +117,15 @@ jobs:
           context: .
           target: ${{ env.stage2 }}
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.stage2 }}
+          tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ env.stage2 }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Sign stage1 image
         run: |
           cosign sign --yes \
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-base.outputs.digest }}
+            ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-base.outputs.digest }}
 
       - name: Sign stage2 image
         run: |
           cosign sign --yes \
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-ns.outputs.digest }}
+            ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-ns.outputs.digest }}
