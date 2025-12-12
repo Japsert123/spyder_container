@@ -1,4 +1,4 @@
-FROM condaforge/miniforge3 as spyder_container
+FROM condaforge/miniforge3 AS spyder_container
 LABEL org.opencontainers.image.description="A distrobox container image for the Spyder IDE!"
 
 # Creating new environment according to environment.yml
@@ -15,6 +15,9 @@ RUN cat ./packages/distrobox.packages | xargs apt-get -y install --no-install-re
 # Prepare the conda environment
 RUN conda env create -f packages/environment.yml
 # RUN /opt/conda/bin/conda init bash
+
+
+FROM spyder_container AS spyder_container_neuroscience
 
 # Setup Simnibs conda env
 RUN conda env create -f packages/neuroscience.yml

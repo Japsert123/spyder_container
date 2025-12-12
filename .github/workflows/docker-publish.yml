@@ -125,7 +125,19 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          target: spyder_container
+          tags: jaspert312/spyder_container
+          labels: ${{ steps.meta.outputs.labels }}
+          no-cache: true
+
+      - name: Build and push Docker image
+        id: build-and-push_ns
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          target: spyder_container_neuroscience
+          tags: jaspert312/spyder_container_neuroscience
           labels: ${{ steps.meta.outputs.labels }}
           no-cache: true
 
