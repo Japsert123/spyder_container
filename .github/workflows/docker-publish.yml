@@ -53,9 +53,6 @@ jobs:
           sudo rm -rf /usr/local/share/powershell
           sudo rm -rf /opt/hostedtoolcache
 
-          docker system prune -af || true
-          docker builder prune -af || true
-
 
       - name: Check free space
         run: |
