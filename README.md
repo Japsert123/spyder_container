@@ -7,4 +7,8 @@ Use this container by running:
 ```
 $ distrobox-assemble create --file https://raw.githubusercontent.com/Japsert123/spyder_container/refs/heads/master/spyder_container.ini
 ```
-on your local Linux system
+on your local Linux system for the base image. Run 
+```
+$ distrobox-assemble create --file https://raw.githubusercontent.com/Japsert123/spyder_container/refs/heads/master/spyder_container_neuroscience.ini
+```
+for an image that includes [MNE](https://mne.tools/stable/index.html) and [Simnibs](https://simnibs.github.io/simnibs/build/html/index.html) (currently Simnibs doesn't work unfortunately...)
