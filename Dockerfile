@@ -15,12 +15,3 @@ RUN cat ./packages/distrobox.packages | xargs apt-get -y install --no-install-re
 # Prepare the conda environment
 RUN conda env create -f packages/environment.yml
 
-# Setup new image from base
-FROM base AS neuroscience
-
-# Install packages required for neuroscience
-RUN cat ./packages/neuroscience.packages | xargs apt-get -y install --no-install-recommends
-
-# Setup Simnibs conda env
-RUN conda env create -f packages/neuroscience.yml
-

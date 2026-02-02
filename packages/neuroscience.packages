@@ -1,8 +1,0 @@
-gcc
-libgl1-mesa-dev
-libosmesa6-dev
-ffmpeg
-libsm6
-libxext6
-libc6-dev
-freeglut3-dev

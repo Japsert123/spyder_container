@@ -21,7 +21,6 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   stage1: base
-  stage2: neuroscience
 
   
 concurrency:
@@ -112,24 +111,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ env.stage1 }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Build and push (${{ env.stage2 }})
-        id: build-ns
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          target: ${{ env.stage2 }}
-          cache-from: type=local,src=/tmp/runner/docker-cache
-          cache-to: type=local,dest=/tmp/runner/docker-cache,mode=max
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ env.stage2 }}
-          labels: ${{ steps.meta.outputs.labels }}
-
       - name: Sign ${{ env.stage1 }} image
         run: |
           cosign sign --yes \
             ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-base.outputs.digest }}
-
-      - name: Sign ${{ env.stage2 }} image
-        run: |
-          cosign sign --yes \
-            ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-ns.outputs.digest }}
