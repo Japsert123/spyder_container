@@ -1,0 +1,21 @@
+name: spyder
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pip
+  - numba
+  - pathlib
+  - seaborn
+
+  - pip:
+    - curvefitgui
+    - tk
+    - openwfs[all]

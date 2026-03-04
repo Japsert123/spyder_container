@@ -15,3 +15,10 @@ RUN cat ./packages/distrobox.packages | xargs apt-get -y install --no-install-re
 # Prepare the conda environment
 RUN conda env create -f packages/environment.yml
 
+FROM base AS machine-learning
+
+RUN conda env create -f packages/ml.yml
+
+FROM base AS wfs
+
+RUN conda env create -f packages/wfs.yml

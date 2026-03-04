@@ -21,6 +21,8 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   stage1: base
+  stage2: machine-learning
+  stage3: wavefront-shaping
 
   
 concurrency:
@@ -112,6 +114,40 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Sign ${{ env.stage1 }} image
+        run: |
+          cosign sign --yes \
+            ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-base.outputs.digest }}
+
+      - name: Build and push (${{ env.stage2 }})
+        id: build-ml
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: ${{ env.stage2 }}
+          cache-from: type=local,src=/tmp/runner/docker-cache
+          cache-to: type=local,dest=/tmp/runner/docker-cache,mode=max
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ env.stage2 }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Sign ${{ env.stage2 }} image
+        run: |
+          cosign sign --yes \
+            ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-base.outputs.digest }}
+
+      - name: Build and push (${{ env.stage3 }})
+        id: build-wfs
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: ${{ env.stage3 }}
+          cache-from: type=local,src=/tmp/runner/docker-cache
+          cache-to: type=local,dest=/tmp/runner/docker-cache,mode=max
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ env.stage3 }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Sign ${{ env.stage3 }} image
         run: |
           cosign sign --yes \
             ${{ env.REGISTRY }}/${{ env.REPO }}@${{ steps.build-base.outputs.digest }}

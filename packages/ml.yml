@@ -1,0 +1,28 @@
+name: machine-learning
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pip
+  - pathlib
+  - seaborn
+
+  - scikit-learn
+  - keras
+
+  - pip:
+    - curvefitgui
+    - tk
+
+    - pip:
+      - --index-url https://download.pytorch.org/whl/rocm7.1
+      - torch 
+      - torchvision
+  
