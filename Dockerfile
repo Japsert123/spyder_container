@@ -19,6 +19,6 @@ FROM base AS machine-learning
 
 RUN conda env create -f packages/ml.yml
 
-FROM base AS wfs
+FROM machine-learning AS wfs
 
 RUN conda env create -f packages/wfs.yml
