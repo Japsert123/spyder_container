@@ -20,6 +20,6 @@ FROM base AS machine-learning
 RUN conda env create -f packages/ml.yml
 # RUN conda activate machine-learning && pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm7.1 && conda deactivate
 
-FROM machine-learning AS wfs
+FROM machine-learning AS wavefront-shaping
 
 RUN conda env create -f packages/wfs.yml
