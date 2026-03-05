@@ -10,19 +10,16 @@ dependencies:
   - pandas
   - scipy
   - matplotlib
-  - pip
   - pathlib
   - seaborn
 
   - scikit-learn
   - keras
 
-  - pip:
-    - curvefitgui
-    - tk
+  - pip
 
-    - pip:
-      - --index-url https://download.pytorch.org/whl/rocm7.1
-      - torch 
-      - torchvision
+  - pip:
+    - --index-url https://download.pytorch.org/whl/rocm7.1
+    - torch 
+    - torchvision
   

@@ -11,10 +11,11 @@ dependencies:
   - scipy
   - matplotlib
   - spyder=6.1.*
-  - pip
   - numba
   - pathlib
   - seaborn
+
+  - pip
 
   - pip:
     - curvefitgui

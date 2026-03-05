@@ -10,10 +10,11 @@ dependencies:
   - pandas
   - scipy
   - matplotlib
-  - pip
   - numba
   - pathlib
   - seaborn
+
+  - pip
 
   - pip:
     - openwfs[all]
