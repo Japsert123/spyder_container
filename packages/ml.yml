@@ -12,6 +12,7 @@ dependencies:
   - matplotlib
   - pathlib
   - seaborn
+  - ipykernel
 
   - scikit-learn
   - keras
