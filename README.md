@@ -5,6 +5,6 @@ The container is intended for use in distrobox/toolbox, but can of course be use
 
 Use this container by running:
 ```
-$ distrobox-assemble create --file https://raw.githubusercontent.com/Japsert123/spyder_container/refs/heads/master/spyder_container.ini
+$ distrobox-assemble create --file https://raw.githubusercontent.com/Japsert123/spyder_container/refs/heads/master/[container type]_container.ini
 ```
 on your local Linux system for the base image.
